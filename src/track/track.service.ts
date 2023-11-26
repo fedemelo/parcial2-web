@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AlbumEntity } from 'src/album/album.entity';
-import { BusinessLogicException, BusinessError } from 'src/shared/errors/business-errors';
+import { AlbumEntity } from '../album/album.entity';
 import { Repository } from 'typeorm';
+import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { TrackEntity } from './track.entity';
 
 @Injectable()

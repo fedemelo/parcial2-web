@@ -1,6 +1,6 @@
 
 import { AlbumEntity } from '../album/album.entity';
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class PerformerEntity {
