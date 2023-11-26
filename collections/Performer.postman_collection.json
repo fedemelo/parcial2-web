@@ -54,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Performer Name\",\n  \"code\": \"AIR\",\n  \"country\": \"Country Name\",\n  \"city\": \"City Name\"\n}",
+							"raw": "{\n  \"name\": \"Rockstar Performer\",\n  \"image\": \"https://example.com/performer-image.jpg\",\n  \"description\": \"An incredible performer with a passion for music!\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,7 +84,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"Performer Name\",\n    \"code\": \"AIR\",\n    \"country\": \"Country Name\",\n    \"city\": \"City Name\",\n    \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\"\n}"
+					"body": "{\n    \"name\": \"Rockstar Performer\",\n    \"image\": \"https://example.com/performer-image.jpg\",\n    \"description\": \"An incredible performer with a passion for music!\",\n    \"id\": \"d1f39678-71f6-49de-9b6a-4b2a7a360927\"\n}"
 				}
 			]
 		},
@@ -138,7 +138,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Performer Name\",\n  \"code\": \"Invalid Code\",\n  \"country\": \"Country Name\",\n  \"city\": \"City Name\"\n}",
+							"raw": "{\n  \"name\": \"Rockstar Performer\",\n  \"image\": \"https://example.com/performer-image.jpg\",\n  \"description\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec ante varius, ullamcorper dolor nec, consectetur purus. Aenean sodales tincidunt lacus, eget fermentum velit pharetra ut. Sed vitae mauris ut elit cursus tristique. Vestibulum vel sapien vel dui aliquet dictum. Ut nec ex quis neque sagittis tempus. In hac habitasse platea dictumst. Proin nec dapibus velit. Maecenas tristique libero a eros euismod, vel tristique leo congue. Integer euismod libero ut eros scelerisque, a ultricies lacus tristique. Curabitur auctor, libero at consequat blandit, justo arcu vestibulum dolor, eu fringilla turpis orci a odio. Suspendisse potenti. Sed efficitur, elit eu rhoncus dapibus, odio mi dictum sapien, vel facilisis ex metus in nisl. Nunc convallis, nisl at congue consectetur, urna justo tincidunt nisi, in fringilla urna sapien id dui.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -168,7 +168,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"Performer Name\",\n    \"code\": \"AIR\",\n    \"country\": \"Country Name\",\n    \"city\": \"City Name\",\n    \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\"\n}"
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": \"The description must not exceed 100 characters\"\n}"
 				}
 			]
 		},
@@ -203,18 +203,18 @@
 			},
 			"response": [
 				{
-					"name": "Get an performer",
+					"name": "Get a performer",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/performers/{{idPerformer}}",
+							"raw": "{{baseURL}}/performers/{{performerId}}",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"performers",
-								"{{idPerformer}}"
+								"{{performerId}}"
 							]
 						}
 					},
@@ -231,7 +231,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\",\n    \"name\": \"Performer Name\",\n    \"code\": \"AIR\",\n    \"country\": \"Country Name\",\n    \"city\": \"City Name\",\n    \"albums\": []\n}"
+					"body": "{\n    \"id\": \"d1f39678-71f6-49de-9b6a-4b2a7a360927\",\n    \"name\": \"Rockstar Performer\",\n    \"image\": \"https://example.com/performer-image.jpg\",\n    \"description\": \"An incredible performer with a passion for music!\",\n    \"albums\": []\n}"
 				}
 			]
 		},
@@ -299,7 +299,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n   \"statusCode\": 404,\n   \"message\": \"The Performer with the given id was not found\"\n}"
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The performer with the given id was not found\"\n}"
 				}
 			]
 		},
@@ -365,7 +365,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\",\n        \"name\": \"Performer Name\",\n        \"code\": \"AIR\",\n        \"country\": \"Country Name\",\n        \"city\": \"City Name\",\n        \"albums\": []\n    }\n]"
+					"body": "[\n    {\n        \"id\": \"fa1c20b2-1669-4350-8de8-4dc62e272208\",\n        \"name\": \"Rockstar Performer\",\n        \"image\": \"https://example.com/performer-image.jpg\",\n        \"description\": \"An incredible performer with a passion for music!\",\n        \"albums\": [\n            {\n                \"id\": \"65d8416f-8870-4e57-aaef-d802e82ec4ed\",\n                \"name\": \"Awesome Album\",\n                \"albumCover\": \"https://example.com/album-cover.jpg\",\n                \"releaseDate\": \"2023-11-20T12:00:00.000Z\",\n                \"description\": \"This is an amazing album.\"\n            }\n        ]\n    },\n    {\n        \"id\": \"d1f39678-71f6-49de-9b6a-4b2a7a360927\",\n        \"name\": \"Rockstar Performer\",\n        \"image\": \"https://example.com/performer-image.jpg\",\n        \"description\": \"An incredible performer with a passion for music!\",\n        \"albums\": []\n    }\n]"
 				}
 			]
 		}

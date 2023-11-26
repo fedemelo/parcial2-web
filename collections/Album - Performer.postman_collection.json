@@ -54,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Album Name\",\n  \"description\": \"Album Description\",\n  \"foundationDate\": \"2022-01-01\",\n  \"webPage\": \"https://www.albumwebsite.com\"\n}",
+							"raw": "{\n  \"name\": \"Awesome Album\",\n  \"albumCover\": \"https://example.com/album-cover.jpg\",\n  \"releaseDate\": \"2023-11-20T12:00:00Z\",\n  \"description\": \"This is an amazing album.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,7 +84,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"Album Name\",\n    \"description\": \"Album Description\",\n    \"foundationDate\": \"2022-01-01\",\n    \"webPage\": \"https://www.albumwebsite.com\",\n    \"id\": \"5369094d-e8c4-4cdc-b40e-09a961cdaff5\"\n}"
+					"body": "{\n    \"name\": \"Awesome Album\",\n    \"albumCover\": \"https://example.com/album-cover.jpg\",\n    \"releaseDate\": \"2023-11-20T12:00:00Z\",\n    \"description\": \"This is an amazing album.\",\n    \"id\": \"65d8416f-8870-4e57-aaef-d802e82ec4ed\"\n}"
 				}
 			]
 		},
@@ -130,13 +130,13 @@
 			},
 			"response": [
 				{
-					"name": "Add an performer",
+					"name": "Add a performer",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Performer Name\",\n  \"code\": \"AIR\",\n  \"country\": \"Country Name\",\n  \"city\": \"City Name\"\n}",
+							"raw": "{\n  \"name\": \"Rockstar Performer\",\n  \"image\": \"https://example.com/performer-image.jpg\",\n  \"description\": \"An incredible performer with a passion for music!\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -166,7 +166,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"Performer Name\",\n    \"code\": \"AIR\",\n    \"country\": \"Country Name\",\n    \"city\": \"City Name\",\n    \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\"\n}"
+					"body": "{\n    \"name\": \"Rockstar Performer\",\n    \"image\": \"https://example.com/performer-image.jpg\",\n    \"description\": \"An incredible performer with a passion for music!\",\n    \"id\": \"fa1c20b2-1669-4350-8de8-4dc62e272208\"\n}"
 				}
 			]
 		},
@@ -203,20 +203,20 @@
 			},
 			"response": [
 				{
-					"name": "Add an performer to a album",
+					"name": "Add a performer to a album",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/albums/{{idAlbum}}/performers/{{idPerformer}}",
+							"raw": "{{baseURL}}/albums/{{albumId}}/performers/{{performerId}}",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"albums",
-								"{{idAlbum}}",
+								"{{albumId}}",
 								"performers",
-								"{{idPerformer}}"
+								"{{performerId}}"
 							]
 						}
 					},
@@ -233,7 +233,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\r\n    \"id\": \"0e98f17e-1dd0-4733-bb4d-71e6b523c6ce\",\r\n    \"name\": \"Album Name\",\r\n    \"description\": \"Album Description\",\r\n    \"foundationDate\": \"2022-01-01T05:00:00.000Z\",\r\n    \"webPage\": \"https://www.albumwebsite.com\",\r\n    \"performers\": [\r\n        {\r\n            \"id\": \"71ff4656-3f16-4a1a-b2f1-4b615a13fbba\",\r\n            \"name\": \"Performer Name\",\r\n            \"code\": \"AIR\",\r\n            \"country\": \"Country Name\",\r\n            \"city\": \"City Name\"\r\n        }\r\n    ]\r\n}"
+					"body": "{\r\n    \"id\": \"65d8416f-8870-4e57-aaef-d802e82ec4ed\",\r\n    \"name\": \"Awesome Album\",\r\n    \"albumCover\": \"https://example.com/album-cover.jpg\",\r\n    \"releaseDate\": \"2023-11-20T12:00:00.000Z\",\r\n    \"description\": \"This is an amazing album.\",\r\n    \"performers\": [\r\n        {\r\n            \"id\": \"fa1c20b2-1669-4350-8de8-4dc62e272208\",\r\n            \"name\": \"Rockstar Performer\",\r\n            \"image\": \"https://example.com/performer-image.jpg\",\r\n            \"description\": \"An incredible performer with a passion for music!\"\r\n        }\r\n    ]\r\n}"
 				}
 			]
 		},
@@ -280,13 +280,13 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/albums/{{idAlbum}}/performers/00000000-0000-0000-0000-000000000000",
+							"raw": "{{baseURL}}/albums/{{albumId}}/performers/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"albums",
-								"{{idAlbum}}",
+								"{{albumId}}",
 								"performers",
 								"00000000-0000-0000-0000-000000000000"
 							]

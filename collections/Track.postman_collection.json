@@ -54,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Album Name\",\n  \"description\": \"Album Description\",\n  \"foundationDate\": \"2022-01-01\",\n  \"webPage\": \"https://www.albumwebsite.com\"\n}",
+							"raw": "{\n  \"name\": \"Awesome Album\",\n  \"albumCover\": \"https://example.com/album-cover.jpg\",\n  \"releaseDate\": \"2023-11-20T12:00:00Z\",\n  \"description\": \"This is an amazing album.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,7 +84,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"Album Name\",\n    \"description\": \"Album Description\",\n    \"foundationDate\": \"2022-01-01\",\n    \"webPage\": \"https://www.albumwebsite.com\",\n    \"id\": \"5369094d-e8c4-4cdc-b40e-09a961cdaff5\"\n}"
+					"body": "{\n    \"name\": \"Awesome Album\",\n    \"albumCover\": \"https://example.com/album-cover.jpg\",\n    \"releaseDate\": \"2023-11-20T12:00:00Z\",\n    \"description\": \"This is an amazing album.\",\n    \"id\": \"da8cccf1-ee9d-4dbc-af0c-a67c71308572\"\n}"
 				}
 			]
 		},
@@ -132,13 +132,13 @@
 			},
 			"response": [
 				{
-					"name": "Add an performer",
+					"name": "Add a track",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Performer Name\",\n  \"code\": \"AIR\",\n  \"country\": \"Country Name\",\n  \"city\": \"City Name\"\n}",
+							"raw": "{\n    \"name\": \" Track\",\n    \"duration\": 180\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -146,12 +146,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/performers",
+							"raw": "{{baseURL}}/albums/{{albumId}}/tracks",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"performers"
+								"albums",
+								"{{albumId}}",
+								"tracks"
 							]
 						}
 					},
@@ -168,7 +170,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"Performer Name\",\n    \"code\": \"AIR\",\n    \"country\": \"Country Name\",\n    \"city\": \"City Name\",\n    \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\"\n}"
+					"body": "{\n    \"name\": \" Track\",\n    \"duration\": 180,\n    \"album\": {\n        \"id\": \"da8cccf1-ee9d-4dbc-af0c-a67c71308572\",\n        \"name\": \"Awesome Album\",\n        \"albumCover\": \"https://example.com/album-cover.jpg\",\n        \"releaseDate\": \"2023-11-20T12:00:00.000Z\",\n        \"description\": \"This is an amazing album.\"\n    },\n    \"id\": \"27d3ddcf-caaa-4fab-8a0a-c6a2892b401d\"\n}"
 				}
 			]
 		},
@@ -218,13 +220,13 @@
 			},
 			"response": [
 				{
-					"name": "Add an performer",
+					"name": "Add an invalid track (non-positive duration)",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Performer Name\",\n  \"code\": \"Invalid Code\",\n  \"country\": \"Country Name\",\n  \"city\": \"City Name\"\n}",
+							"raw": "{\n    \"name\": \" Track\",\n    \"duration\": 0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -232,12 +234,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/performers",
+							"raw": "{{baseURL}}/albums/{{albumId}}/tracks",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"performers"
+								"albums",
+								"{{albumId}}",
+								"tracks"
 							]
 						}
 					},
@@ -254,7 +258,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"Performer Name\",\n    \"code\": \"AIR\",\n    \"country\": \"Country Name\",\n    \"city\": \"City Name\",\n    \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\"\n}"
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": \"The duration must be a positive number\"\n}"
 				}
 			]
 		},
@@ -291,18 +295,20 @@
 			},
 			"response": [
 				{
-					"name": "Get an performer",
+					"name": "Get a track",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/performers/{{idPerformer}}",
+							"raw": "{{baseURL}}/albums/{{albumId}}/tracks/{{trackId}}",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"performers",
-								"{{idPerformer}}"
+								"albums",
+								"{{albumId}}",
+								"tracks",
+								"{{trackId}}"
 							]
 						}
 					},
@@ -319,7 +325,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\",\n    \"name\": \"Performer Name\",\n    \"code\": \"AIR\",\n    \"country\": \"Country Name\",\n    \"city\": \"City Name\",\n    \"albums\": []\n}"
+					"body": "{\n    \"id\": \"27d3ddcf-caaa-4fab-8a0a-c6a2892b401d\",\n    \"name\": \" Track\",\n    \"duration\": 180\n}"
 				}
 			]
 		},
@@ -361,17 +367,19 @@
 			},
 			"response": [
 				{
-					"name": "Get an invalid performer",
+					"name": "Get an invalid track",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/performers/00000000-0000-0000-0000-000000000000",
+							"raw": "{{baseURL}}/albums/{{albumId}}/tracks/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"performers",
+								"albums",
+								"{{albumId}}",
+								"tracks",
 								"00000000-0000-0000-0000-000000000000"
 							]
 						}
@@ -389,7 +397,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n   \"statusCode\": 404,\n   \"message\": \"The Performer with the given id was not found\"\n}"
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The track with the given id was not found\"\n}"
 				}
 			]
 		},
@@ -430,17 +438,19 @@
 			},
 			"response": [
 				{
-					"name": "Get all performers",
+					"name": "Get all tracks from an album",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/performers",
+							"raw": "{{baseURL}}/albums/{{albumId}}/tracks",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
-								"performers"
+								"albums",
+								"{{albumId}}",
+								"tracks"
 							]
 						}
 					},
@@ -457,7 +467,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\",\n        \"name\": \"Performer Name\",\n        \"code\": \"AIR\",\n        \"country\": \"Country Name\",\n        \"city\": \"City Name\",\n        \"albums\": []\n    }\n]"
+					"body": "[\n    {\n        \"id\": \"27d3ddcf-caaa-4fab-8a0a-c6a2892b401d\",\n        \"name\": \" Track\",\n        \"duration\": 180\n    }\n]"
 				}
 			]
 		}

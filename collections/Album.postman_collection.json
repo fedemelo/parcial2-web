@@ -54,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Album Name\",\n  \"description\": \"Album Description\",\n  \"foundationDate\": \"2022-01-01\",\n  \"webPage\": \"https://www.albumwebsite.com\"\n}",
+							"raw": "{\n    \"name\": \"Awesome Album\",\n    \"albumCover\": \"https://example.com/album-cover.jpg\",\n    \"releaseDate\": \"2023-11-20T12:00:00Z\",\n    \"description\": \"This is an amazing album.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,7 +84,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"Album Name\",\n    \"description\": \"Album Description\",\n    \"foundationDate\": \"2022-01-01\",\n    \"webPage\": \"https://www.albumwebsite.com\",\n    \"id\": \"5369094d-e8c4-4cdc-b40e-09a961cdaff5\"\n}"
+					"body": "{\n    \"name\": \"Awesome Album\",\n    \"albumCover\": \"https://example.com/album-cover.jpg\",\n    \"releaseDate\": \"2023-11-20T12:00:00Z\",\n    \"description\": \"This is an amazing album.\",\n    \"id\": \"8e6ef548-f809-405a-b09b-d38918ffab53\"\n}"
 				}
 			]
 		},
@@ -138,7 +138,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Album Name\",\n  \"description\": \"Album Description\",\n  \"foundationDate\": \"2022-01-01\",\n  \"webPage\": \"https://www.albumwebsite.com\"\n}",
+							"raw": "{\n    \"name\": \"Awesome Album\",\n    \"albumCover\": \"https://example.com/album-cover.jpg\",\n    \"releaseDate\": \"2023-11-20T12:00:00Z\",\n    \"description\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -168,7 +168,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"Album Name\",\n    \"description\": \"Album Description\",\n    \"foundationDate\": \"2022-01-01\",\n    \"webPage\": \"https://www.albumwebsite.com\",\n    \"id\": \"5369094d-e8c4-4cdc-b40e-09a961cdaff5\"\n}"
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": \"The album description cannot be empty\"\n}"
 				}
 			]
 		},
@@ -222,7 +222,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Album Name\",\n  \"description\": \"Album Description\",\n  \"foundationDate\": \"2022-01-01\",\n  \"webPage\": \"https://www.albumwebsite.com\"\n}",
+							"raw": "{\n    \"name\": \"\",\n    \"albumCover\": \"https://example.com/album-cover.jpg\",\n    \"releaseDate\": \"2023-11-20T12:00:00Z\",\n    \"description\": \"This is an amazing album.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -252,7 +252,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"Album Name\",\n    \"description\": \"Album Description\",\n    \"foundationDate\": \"2022-01-01\",\n    \"webPage\": \"https://www.albumwebsite.com\",\n    \"id\": \"5369094d-e8c4-4cdc-b40e-09a961cdaff5\"\n}"
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": \"The album name cannot be empty\"\n}"
 				}
 			]
 		},
@@ -318,7 +318,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"id\": \"5369094d-e8c4-4cdc-b40e-09a961cdaff5\",\n        \"name\": \"Album Name\",\n        \"description\": \"Album Description\",\n        \"foundationDate\": \"2022-01-01T05:00:00.000Z\",\n        \"webPage\": \"https://www.albumwebsite.com\",\n        \"performers\": []\n    }\n]"
+					"body": "[\n    {\n        \"id\": \"8e6ef548-f809-405a-b09b-d38918ffab53\",\n        \"name\": \"Awesome Album\",\n        \"albumCover\": \"https://example.com/album-cover.jpg\",\n        \"releaseDate\": \"2023-11-20T12:00:00.000Z\",\n        \"description\": \"This is an amazing album.\",\n        \"performers\": [],\n        \"tracks\": []\n    }\n]"
 				}
 			]
 		},
@@ -358,13 +358,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/albums/{{idAlbum}}",
+							"raw": "{{baseURL}}/albums/{{albumId}}",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"albums",
-								"{{idAlbum}}"
+								"{{albumId}}"
 							]
 						}
 					},
@@ -381,7 +381,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"name\": \"Album Name\",\n    \"description\": \"Album Description\",\n    \"foundationDate\": \"2022-01-01\",\n    \"webPage\": \"https://www.albumwebsite.com\",\n    \"id\": \"5369094d-e8c4-4cdc-b40e-09a961cdaff5\"\n}"
+					"body": "{\n    \"id\": \"8e6ef548-f809-405a-b09b-d38918ffab53\",\n    \"name\": \"Awesome Album\",\n    \"albumCover\": \"https://example.com/album-cover.jpg\",\n    \"releaseDate\": \"2023-11-20T12:00:00.000Z\",\n    \"description\": \"This is an amazing album.\",\n    \"performers\": [],\n    \"tracks\": []\n}"
 				}
 			]
 		},
@@ -449,7 +449,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n   \"statusCode\": 404,\n   \"message\": \"The Album with the given id was not found\"\n}"
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The album with the given id was not found\"\n}"
 				}
 			]
 		},
@@ -517,7 +517,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n   \"statusCode\": 404,\n   \"message\": \"The Album with the given id was not found\"\n}"
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The album with the given id was not found\"\n}"
 				}
 			]
 		},
@@ -557,13 +557,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/albums/{{idAlbum}}",
+							"raw": "{{baseURL}}/albums/{{albumId}}",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"albums",
-								"{{idAlbum}}"
+								"{{albumId}}"
 							]
 						}
 					},
