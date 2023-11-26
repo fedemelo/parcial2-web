@@ -14,21 +14,24 @@ import { TrackModule } from './track/track.module';
 import { AlbumPerformerModule } from './album-performer/album-performer.module';
 
 @Module({
-  imports: [AlbumModule, PerformerModule, TrackModule,
-  TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5433,
-    username: 'postgres',
-    password: 'postgres',
-    database: 'albums',
-    entities: [AlbumEntity, PerformerEntity, TrackEntity],
-    dropSchema: true,
-    synchronize: true,
-    keepConnectionAlive: true,
-  }),
-  AlbumPerformerModule,],
-  controllers: [AppController],
-  providers: [AppService],
+    imports: [
+        AlbumModule,
+        PerformerModule,
+        TrackModule,
+        AlbumPerformerModule,
+        TypeOrmModule.forRoot({
+            type: 'postgres',
+            host: 'localhost',
+            port: 5433,
+            username: 'postgres',
+            password: 'postgres',
+            database: 'albums',
+            entities: [AlbumEntity, PerformerEntity, TrackEntity],
+            dropSchema: true,
+            synchronize: true,
+            keepConnectionAlive: true,
+        })],
+    controllers: [AppController],
+    providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

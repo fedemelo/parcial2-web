@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "73aeb2e0-1275-4353-b016-138f9e64555c",
+		"name": "Performer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23039878"
+	},
+	"item": [
+		{
+			"name": "Add a performer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"performerId\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Rockstar Performer\",\n  \"image\": \"https://example.com/performer-image.jpg\",\n  \"description\": \"An incredible performer with a passion for music!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/performers",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"performers"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add an performer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Performer Name\",\n  \"code\": \"AIR\",\n  \"country\": \"Country Name\",\n  \"city\": \"City Name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/performers",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"performers"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"Performer Name\",\n    \"code\": \"AIR\",\n    \"country\": \"Country Name\",\n    \"city\": \"City Name\",\n    \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add an invalid performer (description too long)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"   pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The description must not exceed 100 characters\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Rockstar Performer\",\n  \"image\": \"https://example.com/performer-image.jpg\",\n  \"description\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec ante varius, ullamcorper dolor nec, consectetur purus. Aenean sodales tincidunt lacus, eget fermentum velit pharetra ut. Sed vitae mauris ut elit cursus tristique. Vestibulum vel sapien vel dui aliquet dictum. Ut nec ex quis neque sagittis tempus. In hac habitasse platea dictumst. Proin nec dapibus velit. Maecenas tristique libero a eros euismod, vel tristique leo congue. Integer euismod libero ut eros scelerisque, a ultricies lacus tristique. Curabitur auctor, libero at consequat blandit, justo arcu vestibulum dolor, eu fringilla turpis orci a odio. Suspendisse potenti. Sed efficitur, elit eu rhoncus dapibus, odio mi dictum sapien, vel facilisis ex metus in nisl. Nunc convallis, nisl at congue consectetur, urna justo tincidunt nisi, in fringilla urna sapien id dui.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/performers",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"performers"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add an performer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Performer Name\",\n  \"code\": \"Invalid Code\",\n  \"country\": \"Country Name\",\n  \"city\": \"City Name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/performers",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"performers"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"Performer Name\",\n    \"code\": \"AIR\",\n    \"country\": \"Country Name\",\n    \"city\": \"City Name\",\n    \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get a performer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/performers/{{performerId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"performers",
+						"{{performerId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get an performer",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/performers/{{idPerformer}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"performers",
+								"{{idPerformer}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\",\n    \"name\": \"Performer Name\",\n    \"code\": \"AIR\",\n    \"country\": \"Country Name\",\n    \"city\": \"City Name\",\n    \"albums\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Get an invalid performer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The performer with the given id was not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/performers/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"performers",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get an invalid performer",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/performers/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"performers",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n   \"statusCode\": 404,\n   \"message\": \"The Performer with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all performers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of performers > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/performers",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"performers"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all performers",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/performers",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"performers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"75151a7e-905f-4af9-a97c-edba719f773f\",\n        \"name\": \"Performer Name\",\n        \"code\": \"AIR\",\n        \"country\": \"Country Name\",\n        \"city\": \"City Name\",\n        \"albums\": []\n    }\n]"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

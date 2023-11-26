@@ -1,4 +1,4 @@
-import { IsDateString, IsNotEmpty, IsString } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
 export class AlbumDto {
 
@@ -8,6 +8,7 @@ export class AlbumDto {
 
     @IsString()
     @IsNotEmpty()
+    @IsUrl()
     readonly albumCover: string;
 
     @IsString()
